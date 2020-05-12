@@ -15,10 +15,11 @@ from .. import command, module, util
 class DebugModule(module.Module):
     name: ClassVar[str] = "Debug"
 
-    @command.desc("Evaluate code")
-    @command.usage("[code snippet]")
-    @command.alias("ev", "exec")
-    async def cmd_eval(self, ctx: command.Context) -> str:
+    if 0: # disable
+      @command.desc("Evaluate code")
+      @command.usage("[code snippet]")
+      @command.alias("ev", "exec")
+      async def cmd_eval(self, ctx: command.Context) -> str:
         code = util.tg.filter_code_block(ctx.input)
         out_buf = io.StringIO()
 
