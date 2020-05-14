@@ -179,6 +179,9 @@ Time: {el_str}"""
                 entity = await self.bot.client.get_entity(entity_ref)
             except ValueError as e:
                 return f"Error getting entity `{entity_ref}`: {e}"
+            except tg.errors.UsernameInvalidError:
+                # Entity has been banned
+                return f"Error getting entity `{entity_ref}`: User or chat associated with the username has been banned and no longer available."
         elif ctx.msg.is_reply:
             entity = await ctx.msg.get_reply_message()
         else:
